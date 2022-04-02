@@ -37,4 +37,25 @@ public class ContaBancariaRest extends GenericCrudRest<ContaBancaria, Long, Cont
 		}
 		return new ResponseEntity<List<ConsultaContaBancariaDTO>>(contas, HttpStatus.OK);
 	}
+<<<<<<< Updated upstream
+=======
+	
+	@PutMapping(value = "/deposito", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<Void> depositar(@RequestBody DepositoDTO dto){
+		contaBancariaService.depositar(dto.getAgencia(), dto.getNumeroConta(), dto.getValor());
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	@PutMapping(value = "/saque", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<Void> sacar(@RequestBody SaqueDTO dto){
+		contaBancariaService.sacar(dto.getAgencia(), dto.getNumeroConta(), dto.getValor());
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+	
+	@PutMapping(value = "/transferencia", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<Void> transferencia(@RequestBody TransferenciaBancariaDTO dto){
+		contaBancariaService.transferir(dto);
+		return new ResponseEntity<Void>(HttpStatus.OK);
+	}
+>>>>>>> Stashed changes
 }

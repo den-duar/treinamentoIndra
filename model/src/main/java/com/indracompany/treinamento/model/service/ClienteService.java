@@ -59,7 +59,7 @@ public class ClienteService extends GenericCrudService<Cliente, Long, ClienteRep
 	}
 
 	public List<ClienteDTO> buscarClientesPorNome(String nome){
-		List<Cliente> clientes = repository.findByNomeStartingWith(nome);
+		List<Cliente> clientes = repository.findByNomeContaining(nome);
 
 		if (clientes == null || clientes.isEmpty()) {
 			throw new AplicacaoException(ExceptionValidacoes.ALERTA_NENHUM_REGISTRO_ENCONTRADO);
