@@ -48,6 +48,7 @@ public class TransacaoService extends GenericCrudService<Transacao, Long, Transa
 			throw new AplicacaoException(ExceptionValidacoes.ALERTA_NENHUM_REGISTRO_ENCONTRADO);
 		}
 		return resultado;
-	}
+		
 
+	}
 }

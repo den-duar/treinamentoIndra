@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.indracompany.treinamento.model.dto.ConsultarExtratoDTO;
+import com.indracompany.treinamento.model.dto.TransacaoDTO;
 import com.indracompany.treinamento.model.entity.Transacao;
 import com.indracompany.treinamento.model.service.TransacaoService;
 
