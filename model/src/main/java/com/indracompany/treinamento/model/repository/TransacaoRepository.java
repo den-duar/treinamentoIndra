@@ -12,6 +12,6 @@ import com.indracompany.treinamento.model.entity.Transacao;
 public interface TransacaoRepository extends GenericCrudRepository<Transacao, Long> {
 	
 		
-	List<Transacao> findByDataBetween(Date data1, Date data2);
+	List<Transacao> findByContaOrigemAndDataBetween(ContaBancaria conta,Date data1, Date data2);
 
 }

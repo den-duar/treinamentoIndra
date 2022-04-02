@@ -25,17 +25,17 @@ public class TransacaoRest extends GenericCrudRest<Transacao, Long, TransacaoSer
 	@Autowired
 	private TransacaoService transacaoService;
 
-	@GetMapping(value = "/buscarExtrato/{conta}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public @ResponseBody ResponseEntity<List<TransacaoDTO>> consultarExtrato(@PathVariable String conta, String agencia, Date data1, Date data2){
+	@GetMapping(value = "/buscarExtrato/{conta}/{agencia}/{data1}/{data2}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public @ResponseBody ResponseEntity<List<Transacao>> consultarExtrato( String conta, String agencia, Date data1, Date data2){
 		ConsultarExtratoDTO buscaExtrato = new ConsultarExtratoDTO();
 		buscaExtrato.setAgencia(agencia);
 		buscaExtrato.setNumeroConta(conta);
 		buscaExtrato.setData1(data1);
 		buscaExtrato.setData2(data2);
-		List<TransacaoDTO> extrato = transacaoService.consultarExtrato(buscaExtrato);
+		List<Transacao> extrato = transacaoService.consultarExtrato(buscaExtrato);
 		if(extrato == null || extrato.isEmpty()) {
-			return new ResponseEntity<List<TransacaoDTO>>(extrato, HttpStatus.NO_CONTENT);
+			return new ResponseEntity<List<Transacao>>(extrato, HttpStatus.NO_CONTENT);
 		}
-		return new ResponseEntity<List<TransacaoDTO>>(extrato, HttpStatus.OK);
+		return new ResponseEntity<List<Transacao>>(extrato, HttpStatus.OK);
 	}
 }

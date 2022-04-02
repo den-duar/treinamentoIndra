@@ -38,6 +38,7 @@ public class ContaBancariaService extends GenericCrudService<ContaBancaria, Long
 	public void depositar (String agencia, String numeroConta, double valor) {
 		ContaBancaria conta = consultarConta(agencia, numeroConta);
 		conta.setSaldo(conta.getSaldo() + valor);
+		
 		super.salvar(conta);
 		Transacao tran = new Transacao();
 		tran.setTipoTransacao("DEPOSITO");
@@ -60,6 +61,7 @@ public class ContaBancariaService extends GenericCrudService<ContaBancaria, Long
 		
 		conta.setSaldo(conta.getSaldo() - valor);
 		super.salvar(conta);
+		
 		Transacao tran = new Transacao();
 		tran.setTipoTransacao("SAQUE");
 		tran.setValor(-valor);
@@ -114,22 +116,20 @@ public class ContaBancariaService extends GenericCrudService<ContaBancaria, Long
 	}
 	
 	public List<ConsultaContaBancariaDTO> obterContasPorCpf(String cpf){
-		
+
 		List<ConsultaContaBancariaDTO> listaContasRetorno = new ArrayList<>();
-		List<Cliente> listaClientes = clienteService.buscarClientes(cpf);
-		for (Cliente cli : listaClientes) {
-			
-			List<ContaBancaria> listaContasCliente = repository.findByCliente(cli);
-			for (ContaBancaria conta : listaContasCliente) {
-				ConsultaContaBancariaDTO dtoConta = new ConsultaContaBancariaDTO();
-				BeanUtils.copyProperties(conta, dtoConta);
-				dtoConta.setCpf(conta.getCliente().getCpf());
-				dtoConta.setNomeTitular(conta.getCliente().getNome());
-				listaContasRetorno.add(dtoConta);
-			}
-			
+		Cliente cli = clienteService.buscarCliente(cpf);
+
+		List<ContaBancaria> listaContasCliente = repository.findByCliente(cli);
+		for (ContaBancaria conta : listaContasCliente) {
+			ConsultaContaBancariaDTO dtoConta = new ConsultaContaBancariaDTO();
+			BeanUtils.copyProperties(conta, dtoConta);
+			dtoConta.setCpf(conta.getCliente().getCpf());
+			dtoConta.setNomeTitular(conta.getCliente().getNome());
+			listaContasRetorno.add(dtoConta);
 		}
-		
+
+
 		return listaContasRetorno;
 	}
 }

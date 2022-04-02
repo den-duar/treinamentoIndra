@@ -25,22 +25,29 @@ public class TransacaoService extends GenericCrudService<Transacao, Long, Transa
 		super.salvar(tran);
 	}
 	
-	public List<TransacaoDTO> consultarExtrato(ConsultarExtratoDTO buscaExtrato){
-		List<TransacaoDTO> extrato = null;
+	public List<Transacao> consultarExtrato(ConsultarExtratoDTO buscaExtrato){
+/*		List<TransacaoDTO> extrato = null;
 		ContaBancaria c = contaBancariaService.consultarConta(buscaExtrato.getAgencia(), buscaExtrato.getNumeroConta());
-		List<Transacao> resultado = repository.findByDataBetween(buscaExtrato.getData1(),buscaExtrato.getData2());
+		List<Transacao> resultado = repository.findByContaOrigemAndDataBetween(c,buscaExtrato.getData1(),buscaExtrato.getData2());
 		if (resultado == null || resultado.isEmpty()) {
 			throw new AplicacaoException(ExceptionValidacoes.ALERTA_NENHUM_REGISTRO_ENCONTRADO);
 		}
 		TransacaoDTO transacaoDTO = new TransacaoDTO();
-		transacaoDTO.setAgencia(buscaExtrato.getAgencia());
-		transacaoDTO.setNumeroConta(buscaExtrato.getNumeroConta());
-		for(int i = 0; i <= resultado.size(); i++) {
-			transacaoDTO.setTipoTransacao(resultado.get(i).getTipoTransacao());
-			transacaoDTO.setValor(resultado.get(i).getValor());
+		transacaoDTO.setAgencia(c.getAgencia());
+		transacaoDTO.setNumeroConta(c.getNumero());
+		for(Transacao transacao : resultado) {
+			transacaoDTO.setTipoTransacao(transacao.getTipoTransacao());
+			transacaoDTO.setValor(transacao.getValor());
 			extrato.add(transacaoDTO);
 		}
 		return extrato;
+		*/
+		ContaBancaria c = contaBancariaService.consultarConta(buscaExtrato.getAgencia(), buscaExtrato.getNumeroConta());
+		List<Transacao> resultado = repository.findByContaOrigemAndDataBetween(c, buscaExtrato.getData1(), buscaExtrato.getData2());
+		if(resultado == null || resultado.isEmpty()) {
+			throw new AplicacaoException(ExceptionValidacoes.ALERTA_NENHUM_REGISTRO_ENCONTRADO);
+		}
+		return resultado;
 	}
 
 }

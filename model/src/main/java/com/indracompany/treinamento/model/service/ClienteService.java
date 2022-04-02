@@ -55,4 +55,17 @@ public class ClienteService extends GenericCrudService<Cliente, Long, ClienteRep
 			  }
 		  return retorno;
 	  }
+	  
+	  public Cliente buscarCliente(String cpf) { 
+			boolean cpfValido = cpf != null && CpfUtil.validaCPF(cpf);
+			if (!cpfValido) {
+				throw new AplicacaoException(ExceptionValidacoes.ERRO_CPF_INVALIDO);
+			}
+			Cliente cliente = (Cliente) repository.findByCpf(cpf);
+			if (cliente == null) {
+				throw new AplicacaoException(ExceptionValidacoes.ALERTA_NENHUM_REGISTRO_ENCONTRADO);
+			}
+			return cliente;
+		}
+	  
 }

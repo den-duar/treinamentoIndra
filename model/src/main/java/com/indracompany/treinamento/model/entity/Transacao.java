@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 import lombok.Data;
@@ -31,7 +31,7 @@ public class Transacao extends GenericEntity<Long>{
 	private Long id;
 			
 
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name= "fk_id_cont_dest", nullable = true)
 	private ContaBancaria contaDestino;
 	
@@ -44,7 +44,7 @@ public class Transacao extends GenericEntity<Long>{
 	@Column(nullable = false)
 	private Date data;
 	
-	@ManyToOne
+	@OneToOne
 	@JoinColumn(name = "fk_id_cont_ori")
 	private ContaBancaria contaOrigem;
 	
