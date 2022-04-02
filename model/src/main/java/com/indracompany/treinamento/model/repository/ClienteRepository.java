@@ -9,6 +9,5 @@ public interface ClienteRepository extends GenericCrudRepository<Cliente, Long>{
 	List<Cliente> findByCpf(String cpf);
 	
 	List<Cliente> findByNomeContaining(String nome);
-	
 
 }
