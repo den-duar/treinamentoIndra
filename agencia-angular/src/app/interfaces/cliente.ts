@@ -5,5 +5,4 @@ export interface ICliente {
   email: string;
   observacoes: string;
   ativo?: boolean;
-
 }

@@ -1,9 +1,8 @@
-<p>Cadastrar clientes</p>
+<p>{{estaEditando() ? "Edição" : "Cadastro"}} de Cliente</p>
 
-{{formCliente.value | json}}
-<div>Form valido = {{formCliente.valid}}</div>
 
-<form [formGroup]="formCliente" (ngSubmit) ="enviar()">
+
+<form [formGroup]="formCliente" (ngSubmit)="enviar()">
   <div class="mb-3">
     <label for="nome" class="form-label">Nome</label>
     <input type="text" class="form-control" id="nome" formControlName="nome">
@@ -18,7 +17,7 @@
   </div>
   <div class="mb-3">
     <label for="observacoes" class="form-label">Observações</label>
-    <textarea name="observacoes" rows="3" class="form-control" formControlName="observacoes"></textarea>
+    <textarea id="observacoes" rows="3" class="form-control" formControlName="observacoes"></textarea>
   </div>
-  <button [disabled] = "!formCliente.valid" type="submit" class="btn btn-dark">Enviar</button>
+  <button [disabled]="!formCliente.valid" type="submit" class="btn btn-dark">Enviar</button>
 </form>

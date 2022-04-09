@@ -5,9 +5,10 @@ import { ClientesComponent } from './pages/clientes/clientes.component';
 import { ContasComponent } from './pages/contas/contas.component';
 
 const routes: Routes = [
-  {path: "clientes", component: ClientesComponent},
-  {path: "contas", component: ContasComponent},
-  {path: "clientes/cadastrar", component: ClientesCadastrarEditarComponent},
+  { path: 'clientes', component: ClientesComponent },
+  { path: 'contas', component: ContasComponent },
+  { path: 'clientes/cadastrar', component: ClientesCadastrarEditarComponent },
+  { path: 'clientes/editar/:id', component: ClientesCadastrarEditarComponent },
 ];
 
 @NgModule({

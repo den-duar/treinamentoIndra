@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { ContasService } from 'src/app/services/contas.service';
 
 @Component({
   selector: 'app-contas',
@@ -8,20 +7,9 @@ import { ContasService } from 'src/app/services/contas.service';
 })
 export class ContasComponent implements OnInit {
 
-  constructor(private contasService: ContasService) { }
-
-  contas: any[] = [];
+  constructor() { }
 
   ngOnInit(): void {
-    this.listarTodas();
-  }
-
-  listarTodas(){
-    this.contasService.listarTodasContas().subscribe((result:any) =>{
-      this.contas = result;
-      console.log(this.contas);
-
-    });
   }
 
 }
