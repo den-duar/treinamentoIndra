@@ -18,6 +18,20 @@
       <td>{{conta.saldo}}</td>
       <td>{{conta.cliente.nome}}</td>
       <td>{{conta.cliente.email}}</td>
+      <td>
+        <div class="dropdownContas">
+          <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+            Ações
+          </button>
+          <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+            <li><a class="dropdown-item" [routerLink]="['deposito', conta.id]">Deposito</a></li>
+            <li><a class="dropdown-item" [routerLink]="['saque', conta.id]">Saque</a></li>
+            <li><a class="dropdown-item" [routerLink]="['transferencia', conta.id]">Transferência</a></li>
+            <li><a class="dropdown-item" [routerLink]="['editar', conta.id]">Editar</a></li>
+            <li><a class="dropdown-item" [routerLink]="['remover', conta.id]">Remover</a></li>
+          </ul>
+        </div>
+      </td>
     </tr>
 
   </tbody>

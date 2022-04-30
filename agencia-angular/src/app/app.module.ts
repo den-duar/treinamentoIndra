@@ -13,6 +13,9 @@ import { LoaderInterceptor } from './interceptors/loader.interceptor';
 import { NgxSpinnerModule } from 'ngx-spinner';
 import { LoaderComponent } from './components/loader/loader.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ContasSaqueDepositoComponent } from './pages/contas/contas-saque-deposito/contas-saque-deposito.component';
+import { ContasCadastrarEditarComponent } from './pages/contas/contas-cadastrar-editar/contas-cadastrar-editar.component';
+
 
 @NgModule({
   declarations: [
@@ -22,6 +25,9 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     ContasComponent,
     ClientesCadastrarEditarComponent,
     LoaderComponent,
+    ContasSaqueDepositoComponent,
+    ContasCadastrarEditarComponent,
+
   ],
   imports: [
     BrowserAnimationsModule,
