@@ -16,7 +16,7 @@ const routes: Routes = [
   { path: 'contas/deposito/:id', component: ContasSaqueDepositoComponent},
   { path: 'contas/transferencia/:id', component: ContasSaqueDepositoComponent},
   { path: 'contas/cadastrar', component: ContasCadastrarEditarComponent},
-  { path: 'contas/editar:id', component: ContasCadastrarEditarComponent}
+  { path: 'contas/editar/:id', component: ContasCadastrarEditarComponent}
 ];
 
 @NgModule({
